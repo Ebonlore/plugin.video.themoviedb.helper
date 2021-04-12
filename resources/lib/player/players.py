@@ -211,7 +211,7 @@ class Players(object):
             label=i.get('name'),
             label2=u'{} v{}'.format(i.get('plugin_name'), xbmcaddon.Addon(i.get('plugin_name', '')).getAddonInfo('version')),
             art={'thumb': i.get('plugin_icon')}).get_listitem() for i in dialog_players]
-        x = xbmcgui.Dialog().select(ADDON.getLocalizedString(32042), players, useDetails=detailed)
+        x = xbmcgui.Dialog().select(ADDON.getLocalizedString(32042), players)
         if x == -1:
             return {}
         player = dialog_players[x]
@@ -439,12 +439,12 @@ class Players(object):
             return format_folderpath(path)
         if not handle or listitem.getProperty('is_resolvable') == 'false':
             return path
-        if listitem.getProperty('is_resolvable') == 'select' and not xbmcgui.Dialog().yesno(
-                '{} - {}'.format(listitem.getProperty('player_name'), ADDON.getLocalizedString(32353)),
-                ADDON.getLocalizedString(32354),
-                yeslabel=u"{} (setResolvedURL)".format(xbmc.getLocalizedString(107)),
-                nolabel=u"{} (PlayMedia)".format(xbmc.getLocalizedString(106))):
-            return path
+#        if listitem.getProperty('is_resolvable') == 'select' and not xbmcgui.Dialog().yesno(
+#                '{} - {}'.format(listitem.getProperty('player_name'), ADDON.getLocalizedString(32353)),
+#                ADDON.getLocalizedString(32354),
+#                yeslabel=u"{} (setResolvedURL)".format(xbmc.getLocalizedString(107)),
+#                nolabel=u"{} (PlayMedia)".format(xbmc.getLocalizedString(106))):
+#            return path
 
     def play(self, folder_path=None, reset_focus=None, handle=None):
         # Get some info about current container for container update hack
