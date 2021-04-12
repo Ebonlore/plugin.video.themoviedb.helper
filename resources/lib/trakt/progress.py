@@ -9,7 +9,7 @@ from resources.lib.addon.cache import CACHE_SHORT, CACHE_LONG, use_simple_cache
 
 class _TraktProgress():
     @is_authorized
-    def get_inprogress_shows_list(self, page=1, limit=20, params=None, next_page=True, sort_by=None, sort_how=None):
+    def get_inprogress_shows_list(self, page=1, limit=99, params=None, next_page=True, sort_by=None, sort_how=None):
         response = self._get_upnext_episodes_list(sort_by_premiered=True) if sort_by == 'year' else self._get_inprogress_shows()
         response = TraktItems(response, trakt_type='show').build_items(
             params_def=params, sort_by=sort_by if sort_by != 'year' else 'unsorted', sort_how=sort_how)
@@ -277,7 +277,7 @@ class _TraktProgress():
         return [self._get_calendar_episode_item(i) for i in traktitems if self._get_calendar_episode_item_bool(
             i, kodi_db, user, startdate, days)]
 
-    def get_calendar_episodes_list(self, startdate=0, days=1, user=True, kodi_db=None, page=1, limit=20):
+    def get_calendar_episodes_list(self, startdate=0, days=1, user=True, kodi_db=None, page=1, limit=99):
         response_items = self._get_calendar_episodes_list(startdate, days, user, kodi_db)
         response = PaginatedItems(response_items, page=page, limit=limit)
         if response and response.items:
