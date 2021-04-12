@@ -145,7 +145,7 @@ def get_userlist(user_slug=None, list_slug=None, confirm=True, busy_spinner=True
             # List is within limits so ask for confirmation before adding it
             d_body = [
                 ADDON.getLocalizedString(32168).format(list_slug, user_slug),
-                ADDON.getLocalizedString(32171).format(len(request)) if len(request) > 20 else '',
+                ADDON.getLocalizedString(32171).format(len(request)) if len(request) > 99 else '',
                 '',
                 ADDON.getLocalizedString(32126)]
             if not xbmcgui.Dialog().yesno(d_head, '\n'.join(d_body)):
