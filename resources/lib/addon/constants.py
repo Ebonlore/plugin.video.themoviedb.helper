@@ -51,22 +51,22 @@ TMDB_ALL_ITEMS_LISTS = {
     'movie': {
         'type': 'movie',
         'sort': False,
-        'limit': 20
+        'limit': 99
     },
     'tv': {
         'type': 'tv_series',
         'sort': False,
-        'limit': 20
+        'limit': 99
     },
     'person': {
         'type': 'person',
         'sort': False,
-        'limit': 20
+        'limit': 99
     },
     'collection': {
         'type': 'collection',
         'sort': False,
-        'limit': 20
+        'limit': 99
     },
     'network': {
         'type': 'tv_network',
